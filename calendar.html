@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Calendar | Courageous Academy</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * { box-sizing: border-box; }
+            body {
+                margin: 0;
+                font-family: "Cormorant Garamond", Georgia, serif;
+                background: #fff3f8;
+                color: #4b3440;
+                line-height: 1.6;
+            }
+            .top-bar { background: #c9869f; color: white; padding: 10px 24px; font-size: .95rem; text-align: center; letter-spacing: .5px; }
+            header { background: #fff9fc; border-bottom: 1px solid #f3cddd; }
+            .header-inner { max-width: 1100px; margin: 0 auto; padding: 30px 24px 24px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+            .logo-area h1 { color: #9f5f78; font-family: "Great Vibes", cursive; font-size: 3.4rem; font-weight: 400; margin: 0; letter-spacing: 1px; }
+            .logo-area p { margin: 4px 0 0; color: #9f5f78; font-weight: 600; letter-spacing: 1.5px; }
+            nav { display: flex; justify-content: center; gap: 8px; flex-wrap: nowrap; white-space: nowrap; overflow-x: auto; }
+            nav a { display: inline-block; margin: 5px; padding: 10px 16px; color: #9f5f78; text-decoration: none; font-size: 1.2rem; font-weight: 700; border-bottom: 3px solid transparent; }
+            nav a:hover, nav a.current { border-bottom-color: #f4aac8; color: #c05f86; }
+            .hero { position: relative; overflow: hidden; background: #9f5f78; color: white; padding: 100px 24px; text-align: center; }
+            .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+            .hero::after { content: ""; position: absolute; inset: 0; background: rgba(166, 83, 115, .52); z-index: 1; }
+            .hero-content { position: relative; z-index: 2; }
+            .hero h2 { font-family: "Great Vibes", cursive; font-size: 4.7rem; font-weight: 400; margin: 0 0 16px; color: white; }
+            .hero p { font-size: 1.25rem; margin: 0; }
+            main { max-width: 1100px; margin: 0 auto; padding: 45px 24px; }
+            section { margin-bottom: 42px; background: #fff9fc; padding: 34px; border-radius: 6px; box-shadow: 0 4px 18px rgba(166, 83, 115, .10); border-top: 5px solid #f4aac8; }
+            h2 { color: #9f5f78; margin-top: 0; padding-bottom: 12px; border-bottom: 1px solid #f3cddd; font-size: 2rem; }
+            .schedule-wrap { overflow-x: auto; }
+            table { width: 100%; border-collapse: collapse; min-width: 650px; background: #fffafd; }
+            th, td { padding: 16px 18px; text-align: left; border: 1px solid #f3cddd; }
+            th { background: #c9869f; color: white; font-size: 1.15rem; }
+            td:first-child { color: #9f5f78; font-weight: 700; white-space: nowrap; }
+            tr:nth-child(even) td { background: #fde8f1; }
+            .note { background: #fde8f1; border-left: 5px solid #f4aac8; padding: 16px 20px; margin-top: 24px; }
+            .dress-code-link { position: relative; display: block; width: fit-content; margin: 28px auto 0; padding: 12px 28px; border: 2px solid #f4aac8; border-radius: 6px; background: #fff9fc; color: #c05f86; font-weight: 700; font-size: 1.5rem; text-align: center; z-index: 1; }
+            .event-boxes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+            .event-box { background: #fde8f1; border: 1px solid #f3cddd; border-radius: 6px; padding: 24px; text-align: center; }
+            .event-box h3 { color: #c05f86; margin-top: 0; font-size: 1.4rem; }
+            .event-box.winter-event { background: linear-gradient(rgba(166, 83, 115, .62), rgba(166, 83, 115, .62)), url("https://i.pinimg.com/1200x/80/58/f4/8058f40cf986524120d1fd11768c187f.jpg") center / cover no-repeat; color: white; }
+            .event-box.winter-event h3, .event-box.winter-event .event-date { color: white; }
+            .event-box.spring-event { background: linear-gradient(rgba(166, 83, 115, .50), rgba(166, 83, 115, .50)), url("https://i.pinimg.com/736x/c9/4b/03/c94b03c26e97d57622298b86daf66232.jpg") center / cover no-repeat; color: white; }
+            .event-box.spring-event h3, .event-box.spring-event .event-date { color: white; }
+            .event-date { color: #9f5f78; font-weight: 700; font-size: 1.15rem; }
+            footer { text-align: center; padding: 28px; background: #c9869f; color: white; }
+            @media (max-width: 700px) { .hero h2 { font-size: 3.2rem; } section { padding: 24px; } .event-boxes { grid-template-columns: 1fr; } }
+        </style>
+    </head>
+    <body>
+        <div class="top-bar">Academy of Dance • Ballet Training for Young Dancers</div>
+        <header>
+            <div class="header-inner">
+                <div class="logo-area">
+                    <h1>Courageous Ballet Academy</h1>
+                    <p>Grace, confidence, and joy through ballet.</p>
+                </div>
+                <nav>
+                    <a href="zoes-dance-studio.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a class="current" href="calendar.html">Calendar And Events</a>
+                    <a href="enroll.html">Enroll And Pay Online</a>
+                    <a href="contact.html">Contact Us</a>
+                </nav>
+            </div>
+        </header>
+        <div class="hero">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="videos/pointe-ballet.mp4" type="video/mp4" />
+            </video>
+            <div class="hero-content">
+                <h2>Calendar And Events</h2>
+                <p>Explore classes, divisions, and upcoming performances.</p>
+            </div>
+        </div>
+        <main>
+            <section id="recreational-division">
+                <h2>Recreational Division</h2>
+                <div class="schedule-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Level</th><th>Class</th><th>Age Range</th><th>What Dancers Explore</th><th>Class Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Pre-K</td><td>Pre-K Ballerinas</td><td>Ages 3–5</td><td>Creative movement, rhythm, coordination, and ballet basics</td><td>Monday, 4:00–4:45 PM</td></tr>
+                            <tr><td>Level 1</td><td>Junior Ballet</td><td>Ages 6–8</td><td>Foundational positions, steps, posture, and musicality</td><td>Tuesday, 4:30–5:30 PM</td></tr>
+                            <tr><td>Level 2</td><td>Pre-Teen Ballet</td><td>Ages 9–12</td><td>Developing technique, strength, flexibility, and performance skills</td><td>Wednesday, 5:00–6:15 PM</td></tr>
+                            <tr><td>Level 3</td><td>Teen Ballet</td><td>Ages 13–18</td><td>Progressive ballet technique, artistry, and confidence</td><td>Thursday, 5:30–7:00 PM</td></tr>
+                            <tr><td>Advanced</td><td>Pre-Professional Ballet</td><td>Ages 12–18</td><td>Advanced training, refinement, and preparation for performance</td><td>Friday, 10:00–11:30 AM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="pre-professional-division">
+                <h2>Pre-Professional Division</h2>
+                <div class="schedule-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Track</th><th>Class</th><th>Recommended Ages</th><th>Training Focus</th><th>Class Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Foundations</td><td>Pre-Professional Ballet</td><td>Ages 12–14</td><td>Strong technique, alignment, flexibility, and musicality</td><td>Friday, 10:00–11:30 AM</td></tr>
+                            <tr><td>Intermediate</td><td>Pre-Professional Ballet</td><td>Ages 14–16</td><td>Advanced vocabulary, pointe preparation, artistry, and stamina</td><td>Friday, 10:00–11:30 AM</td></tr>
+                            <tr><td>Advanced</td><td>Pre-Professional Ballet</td><td>Ages 16–18</td><td>Refined technique, performance quality, and professional preparation</td><td>Friday, 10:00–11:30 AM</td></tr>
+                            <tr><td>Performance</td><td>Rehearsal &amp; Performance</td><td>By invitation</td><td>Repertoire, stage presence, and recital or showcase preparation</td><td>By arrangement</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="note"><strong>Placement:</strong> Pre-professional dancers are placed by experience and instructor recommendation so each student receives the right level of challenge and support.</div>
+            </section>
+
+            <section>
+                <h2>Upcoming Events</h2>
+                <div class="event-boxes">
+                    <div class="event-box winter-event">
+                        <h3>Nutcracker Recital</h3>
+                        <p class="event-date">December 15th</p>
+                        <p>Celebrate our dancers as they share their hard work, confidence, and love of ballet on stage.</p>
+                    </div>
+                    <div class="event-box spring-event">
+                        <h3>Spring Ballet Showcase</h3>
+                        <p class="event-date">May 23rd</p>
+                        <p>Join us for an inspiring performance featuring dancers from our recreational and pre-professional divisions.</p>
+                    </div>
+                </div>
+            </section>
+
+            <a class="dress-code-link" href="dress-code.html"><span style="position: relative; z-index: 3;">View Our Dress Code →</span></a>
+        </main>
+        <footer><p>&copy; 2026 Courageous Academy. All rights reserved.</p></footer>
+    </body>
+</html>

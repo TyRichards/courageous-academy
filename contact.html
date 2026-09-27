@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Contact Us | Courageous Academy</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                font-family: "Cormorant Garamond", Georgia, serif;
+                background: #fff3f8;
+                color: #4b3440;
+                line-height: 1.6;
+            }
+
+            .top-bar {
+                background: #c9869f;
+                color: white;
+                padding: 10px 24px;
+                font-size: 0.95rem;
+                text-align: center;
+                letter-spacing: 0.5px;
+            }
+
+            header {
+                background: #fff9fc;
+                border-bottom: 1px solid #f3cddd;
+            }
+
+            .header-inner {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 30px 24px 24px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 14px;
+                text-align: center;
+            }
+
+            nav {
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+                flex-wrap: nowrap;
+                white-space: nowrap;
+            }
+
+            .logo-area h1 {
+                color: #9f5f78;
+                font-family: "Great Vibes", cursive;
+                font-size: 3.4rem;
+                font-weight: 400;
+                margin: 0;
+                letter-spacing: 1px;
+            }
+
+            .logo-area p {
+                margin: 4px 0 0;
+                color: #9f5f78;
+                font-weight: 600;
+                letter-spacing: 1.5px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+                padding: 10px 16px;
+                color: #9f5f78;
+                text-decoration: none;
+                font-size: 1.2rem;
+                font-weight: 700;
+                border-bottom: 3px solid transparent;
+            }
+
+            nav a:hover,
+            nav a.current {
+                border-bottom-color: #f4aac8;
+                color: #c05f86;
+            }
+
+            .hero {
+                background:
+                    linear-gradient(
+                        rgba(166, 83, 115, 0.52),
+                        rgba(166, 83, 115, 0.52)
+                    ),
+                    url("https://i.pinimg.com/1200x/80/58/f4/8058f40cf986524120d1fd11768c187f.jpg")
+                        center / cover no-repeat;
+                color: white;
+                padding: 120px 24px;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 850px;
+                margin: 0 auto;
+            }
+
+            .hero h2 {
+                font-family: "Great Vibes", cursive;
+                font-size: 4.7rem;
+                font-weight: 400;
+                margin: 0 0 16px;
+                border: none;
+                color: white;
+            }
+
+            .hero p {
+                font-size: 1.25rem;
+                margin-bottom: 28px;
+            }
+
+            .button {
+                display: inline-block;
+                background: #f4aac8;
+                color: #9f5f78;
+                text-decoration: none;
+                padding: 13px 24px;
+                border-radius: 4px;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .button:hover {
+                background: #ffd0e2;
+            }
+
+            main {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 45px 24px;
+            }
+
+            section {
+                margin-bottom: 42px;
+                background: #fff9fc;
+                padding: 34px;
+                border-radius: 6px;
+                box-shadow: 0 4px 18px rgba(166, 83, 115, 0.10);
+                border-top: 5px solid #f4aac8;
+            }
+
+            h2 {
+                color: #9f5f78;
+                margin-top: 0;
+                padding-bottom: 12px;
+                border-bottom: 1px solid #f3cddd;
+                font-size: 2rem;
+            }
+
+            .intro-grid {
+                display: grid;
+                grid-template-columns: 1.5fr 1fr;
+                gap: 28px;
+                align-items: start;
+            }
+
+            .info-box {
+                background: #fde8f1;
+                border-left: 5px solid #f4aac8;
+                padding: 20px;
+                border-radius: 4px;
+            }
+
+            .cards {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+                gap: 20px;
+                margin-top: 22px;
+            }
+
+            .card {
+                background: #fffafd;
+                padding: 24px;
+                border: 1px solid #f3cddd;
+                border-radius: 6px;
+                min-height: 145px;
+            }
+
+            .card h3 {
+                color: #c05f86;
+                margin-top: 0;
+                font-size: 1.25rem;
+            }
+
+            .highlight {
+                background: #c9869f;
+                color: white;
+                border-top-color: #ffd6e7;
+            }
+
+            .highlight h2 {
+                color: white;
+                border-bottom-color: rgba(255, 255, 255, 0.25);
+            }
+
+            .contact-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            footer {
+                text-align: center;
+                padding: 28px;
+                background: #c9869f;
+                color: white;
+            }
+
+            @media (max-width: 700px) {
+                .header-inner,
+                .intro-grid {
+                    display: block;
+                    text-align: center;
+                }
+
+                nav {
+                    margin-top: 18px;
+                }
+
+                .hero h2 {
+                    font-size: 2.2rem;
+                }
+
+                section {
+                    padding: 24px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="top-bar">
+            Academy of Dance • Ballet Training for Young Dancers
+        </div>
+
+        <header id="home">
+            <div class="header-inner">
+                <div class="logo-area">
+                    <h1>Courageous Ballet Academy</h1>
+                    <p>Grace, confidence, and joy through ballet.</p>
+                </div>
+
+                <nav>
+                    <a href="zoes-dance-studio.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="calendar.html">Calendar And Events</a>
+                    <a href="enroll.html">Enroll And Pay Online</a>
+                    <a class="current" href="contact.html">Contact Us</a>
+                </nav>
+            </div>
+        </header>
+
+        <div class="hero">
+            <div class="hero-content">
+                <h2>Contact Us</h2>
+                <p>
+                    Ready to begin? We would love to help your dancer join Courageous Academy.
+                </p>
+            </div>
+        </div>
+
+        <main>
+            <section class="highlight">
+                <h2>Recitals</h2>
+                <p>
+                    Courageous Academy holds ballet recitals every year on
+                    <strong>December 15th</strong> and
+                    <strong>May 23rd</strong>.
+                </p>
+            </section>
+
+            <section id="contact">
+                <div class="contact-row">
+                    <div>
+                        <h2>Contact Us</h2>
+                        <p>
+                            Have questions or want to sign up? Contact
+                            Courageous Academy and we will be happy to help you
+                            get started.
+                        </p>
+                        <p>
+                            <strong>Phone:</strong> (555) 248-7316<br />
+                            <strong>Email:</strong>
+                            hello@courageousballetacademy.com
+                        </p>
+                    </div>
+                    <div>
+                        <a class="button" href="mailto:hello@courageousballetacademy.com"
+                            >Email Us</a
+                        >
+                        <a class="button" href="tel:+15552487316"
+                            >Call Us</a
+                        >
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Courageous Academy. All rights reserved.</p>
+        </footer>
+    </body>
+</html>
